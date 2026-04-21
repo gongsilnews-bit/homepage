@@ -86,7 +86,7 @@ export default function NewsPage() {
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>
-                  <h3 className="font-bold text-[15px] text-gray-900 leading-snug line-clamp-2 group-hover:underline decoration-blue-600 decoration-2 underline-offset-2">
+                  <h3 className="font-bold text-[15px] text-gray-900 leading-snug line-clamp-2 group-hover:underline decoration-gold decoration-2 underline-offset-2">
                     {article.title}
                   </h3>
                 </Link>
@@ -110,7 +110,7 @@ export default function NewsPage() {
               {LIST_ARTICLES.map((article) => (
                 <article key={article.id} className="pb-8 border-b border-gray-100 last:border-0 last:pb-0">
                   <Link href={`/news/${article.id}`} className="group block">
-                    <h3 className="text-[20px] font-bold text-gray-900 mb-3 leading-snug group-hover:underline decoration-blue-600 underline-offset-2">
+                    <h3 className="text-[20px] font-bold text-gray-900 mb-3 leading-snug group-hover:underline decoration-gold underline-offset-2">
                       {article.title}
                     </h3>
                   </Link>
@@ -118,7 +118,7 @@ export default function NewsPage() {
                     {article.excerpt}
                   </p>
                   <div className="flex flex-wrap items-center gap-x-2 text-[12px] text-gray-400">
-                    <span className="text-blue-500 font-medium">[{article.category}]</span>
+                    <span className="text-gold font-medium">[{article.category}]</span>
                     <span className="inline-block w-0.5 h-2.5 bg-gray-300"></span>
                     <span>{article.date} {article.modified && `(수정: ${article.modified})`}</span>
                     <span className="inline-block w-0.5 h-2.5 bg-gray-300"></span>
@@ -133,7 +133,7 @@ export default function NewsPage() {
           {/* Right Column: Sidebar */}
           <aside className="lg:w-[30%]">
             
-            <div className="border border-red-500 rounded-sm p-5 sticky top-24 rounded-tl-xl rounded-br-xl mt-1 lg:mt-0 shadow-sm bg-white">
+            <div className="border border-gold rounded-sm p-5 sticky top-24 rounded-tl-xl rounded-br-xl mt-1 lg:mt-0 shadow-sm bg-white">
               <h3 className="text-[17px] font-bold text-gray-900 border-b border-gray-200 pb-3 mb-4 tracking-tight">
                 전체뉴스 많이 본 뉴스
               </h3>
@@ -141,7 +141,7 @@ export default function NewsPage() {
               <ul className="flex flex-col gap-4">
                 {HOT_ARTICLES.map((title, index) => (
                   <li key={index} className="flex gap-3 group cursor-pointer">
-                    <span className="font-extrabold text-[15px] text-red-600 italic shrink-0 w-4">{index + 1}</span>
+                    <span className="font-extrabold text-[15px] text-gold italic shrink-0 w-4">{index + 1}</span>
                     <p className="text-[14px] text-gray-800 leading-tight group-hover:underline decoration-gray-400 underline-offset-2">
                       {title}
                     </p>

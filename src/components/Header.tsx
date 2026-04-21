@@ -20,36 +20,39 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b-[3px] border-gold shadow-sm">
-      <div className="max-w-[1280px] mx-auto px-4 flex items-center justify-between h-[64px]">
-        {/* Logo */}
-        <Link href="/" className="flex items-center shrink-0">
-          <Image
-            src="/images/buildon_logo_real.png"
-            alt="빌드온 브랜드 로고"
-            width={160}
-            height={53}
-            priority
-            className="h-10 md:h-12 w-auto object-contain"
-          />
-        </Link>
+      <div className={`${pathname === '/map' ? 'w-full px-6' : 'max-w-[1280px] px-4'} mx-auto flex items-center justify-between h-[64px]`}>
+        {/* Left Section: Logo & Nav */}
+        <div className="flex items-center gap-8 lg:gap-14">
+          {/* Logo */}
+          <Link href="/" className="flex items-center shrink-0">
+            <Image
+              src="/images/buildon_logo_real.png"
+              alt="빌드온 브랜드 로고"
+              width={160}
+              height={53}
+              priority
+              className="h-10 md:h-12 w-auto object-contain"
+            />
+          </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-6">
-          {menuItems.map((item) => {
-            const isActive = item.href === '/' ? pathname === '/' : pathname?.startsWith(item.href);
-            return (
-              <Link
-                key={item.label}
-                href={item.href}
-                className={`text-[14px] font-medium transition-colors hover:text-gold whitespace-nowrap ${
-                  isActive ? 'text-gold font-bold' : 'text-dark'
-                }`}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center gap-6">
+            {menuItems.map((item) => {
+              const isActive = item.href === '/' ? pathname === '/' : pathname?.startsWith(item.href);
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className={`text-[14px] font-medium transition-colors hover:text-gold whitespace-nowrap ${
+                    isActive ? 'text-gold font-bold' : 'text-dark'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
 
         {/* Phone Numbers */}
         <div className="hidden xl:flex items-center gap-4">

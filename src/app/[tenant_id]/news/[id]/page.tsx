@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { FiStar, FiShare2, FiPrinter } from 'react-icons/fi';
 
 const HOT_ARTICLES = [
   "‘나도 에어비앤비 해볼까?’... 오피스텔·하숙권 덜컥 계약했다간 ‘전과자’ 될 수도",
@@ -27,7 +28,7 @@ export default function NewsDetailPage({ params }: { params: any }) {
             
             <article>
               {/* Category Breadcrumbs */}
-              <div className="text-[14px] text-blue-600 font-medium mb-3">
+              <div className="text-[14px] text-gold font-medium mb-3">
                 뉴스/칼럼 &gt; 부동산·주식·재테크
               </div>
 
@@ -46,14 +47,20 @@ export default function NewsDetailPage({ params }: { params: any }) {
                   <span>수정 2026.04.20 13:59</span>
                 </div>
                 
-                {/* Social Share Mock */}
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-[#3b5998] text-white flex items-center justify-center text-[12px] cursor-pointer">F</div>
-                  <div className="w-8 h-8 rounded-full bg-[#00acee] text-white flex items-center justify-center text-[12px] cursor-pointer">T</div>
-                  <div className="w-8 h-8 rounded-full bg-[#00c73c] text-white flex items-center justify-center text-[12px] cursor-pointer">N</div>
-                  <div className="w-8 h-8 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center cursor-pointer">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-                  </div>
+                {/* Action Buttons */}
+                <div className="flex items-center gap-4 text-gray-500 mb-1">
+                  <button aria-label="스크랩" className="hover:text-gold transition-colors">
+                    <FiStar size={18} />
+                  </button>
+                  <button aria-label="공유하기" className="hover:text-gold transition-colors">
+                    <FiShare2 size={18} />
+                  </button>
+                  <button aria-label="글자크기" className="text-[13px] font-bold hover:text-gold transition-colors tracking-tighter">
+                    가가
+                  </button>
+                  <button aria-label="인쇄하기" className="hover:text-gold transition-colors">
+                    <FiPrinter size={18} />
+                  </button>
                 </div>
               </div>
 
@@ -108,14 +115,14 @@ export default function NewsDetailPage({ params }: { params: any }) {
 
           {/* Right Column: Sidebar (Shared with List Page) */}
           <aside className="lg:w-[30%]">
-            <div className="border border-red-500 rounded-sm p-5 sticky top-24 shadow-sm bg-white rounded-tl-xl rounded-br-xl">
+            <div className="border border-gold rounded-sm p-5 sticky top-24 shadow-sm bg-white rounded-tl-xl rounded-br-xl">
               <h3 className="text-[17px] font-bold text-gray-900 border-b border-gray-200 pb-3 mb-4 tracking-tight">
                 전체뉴스 많이 본 뉴스
               </h3>
               <ul className="flex flex-col gap-4">
                 {HOT_ARTICLES.map((title, index) => (
                   <li key={index} className="flex gap-3 group cursor-pointer">
-                    <span className="font-extrabold text-[15px] text-red-600 italic shrink-0 w-4">{index + 1}</span>
+                    <span className="font-extrabold text-[15px] text-gold italic shrink-0 w-4">{index + 1}</span>
                     <p className="text-[14px] text-gray-800 leading-tight group-hover:underline decoration-gray-400 underline-offset-2">
                       {title}
                     </p>
