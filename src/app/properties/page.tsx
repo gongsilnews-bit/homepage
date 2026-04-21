@@ -1,20 +1,8 @@
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import GridPropertyCard from '@/components/GridPropertyCard';
-
-const MOCK_PROPERTIES = Array.from({ length: 16 }).map((_, i) => ({
-  id: `mock-${i}`,
-  imageUrl: `https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=400&q=80`,
-  isRecommended: i === 0 || i === 5,
-  propertyNo: `${12845 + i}`,
-  location: i % 3 === 0 ? "서울특별시 강남구 역삼동" : i % 2 === 0 ? "서울특별시 한남동" : "서울특별시 성수동1가",
-  title: i % 4 === 0 ? "강남대로변 초역세권 신축급 인테리어 사무실" : i % 3 === 0 ? "테라스가 있는 프라이빗 단독주택형 오피스" : "전망이 우수한 고층 통유리 코너 사무실",
-  exclusiveArea: 45 + (i * 12) % 150,
-  deposit: `${(i % 4 + 1) * 3}000만`,
-  monthlyRent: `${(i % 4 + 1) * 150}만`,
-  subwayInfo: i % 2 === 0 ? "강남역 도보 3분" : "성수역 도보 5분"
-}));
+import PropertyCard from '@/components/PropertyCard';
+import { sampleProperties } from '@/data/sampleData';
 
 export default function PropertiesPage() {
   return (
@@ -31,7 +19,6 @@ export default function PropertiesPage() {
             {/* Top Links */}
             <div className="mb-6 space-y-3">
               <a href="#" className="block text-[15px] font-bold text-gold cursor-pointer hover:underline">전체 매물 보기</a>
-              <a href="#" className="block text-[15px] font-medium text-gray-700 cursor-pointer hover:text-gold">추천 매물 보기</a>
             </div>
 
             <hr className="border-gray-100 my-4" />
@@ -126,13 +113,13 @@ export default function PropertiesPage() {
 
           {/* Result Count */}
           <div className="mb-4">
-            <span className="text-[14px] font-bold text-gray-900">검색결과 {MOCK_PROPERTIES.length}건</span>
+            <span className="text-[14px] font-bold text-gray-900">검색결과 {sampleProperties.length}건</span>
           </div>
 
           {/* Grid Layout taking 4 columns on extremely large screens, 3 on large, 2 on medium */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-            {MOCK_PROPERTIES.map((prop) => (
-              <GridPropertyCard key={prop.id} {...prop} />
+            {sampleProperties.map((property) => (
+              <PropertyCard key={property.id} property={property} />
             ))}
           </div>
 

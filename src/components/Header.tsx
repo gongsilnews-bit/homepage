@@ -8,13 +8,10 @@ import { FiPhone, FiMenu, FiX } from 'react-icons/fi';
 
 const menuItems = [
   { label: '메인', href: '/' },
-  { label: '회사소개', href: '/about' },
   { label: '지도검색', href: '/map' },
   { label: '전체매물보기', href: '/properties' },
   { label: '뉴스기사', href: '/news' },
   { label: '임대·임차의뢰', href: '/request' },
-  { label: '자유게시판', href: '/board' },
-  { label: '1:1문의', href: '/contact' },
 ];
 
 export default function Header() {
