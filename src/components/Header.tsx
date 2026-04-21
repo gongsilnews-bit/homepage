@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
@@ -7,10 +8,13 @@ import { FiPhone, FiMenu, FiX } from 'react-icons/fi';
 
 const menuItems = [
   { label: '메인', href: '/' },
+  { label: '회사소개', href: '/about' },
   { label: '지도검색', href: '/map' },
   { label: '전체매물보기', href: '/properties' },
   { label: '뉴스기사', href: '/news' },
   { label: '임대·임차의뢰', href: '/request' },
+  { label: '자유게시판', href: '/board' },
+  { label: '1:1문의', href: '/contact' },
 ];
 
 export default function Header() {
@@ -21,7 +25,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white border-b-[3px] border-gold shadow-sm">
       <div className="max-w-[1280px] mx-auto px-4 flex items-center justify-between h-[64px]">
         {/* Logo */}
-        <a href="/" className="flex items-center shrink-0">
+        <Link href="/" className="flex items-center shrink-0">
           <Image
             src="/images/buildon_logo_real.png"
             alt="빌드온 브랜드 로고"
@@ -30,38 +34,38 @@ export default function Header() {
             priority
             className="h-10 md:h-12 w-auto object-contain"
           />
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-6">
           {menuItems.map((item) => {
             const isActive = item.href === '/' ? pathname === '/' : pathname?.startsWith(item.href);
             return (
-              <a
+              <Link
                 key={item.label}
                 href={item.href}
-                className={`text-[15px] font-medium transition-colors hover:text-gold ${
-                  isActive ? 'text-gold' : 'text-dark'
+                className={`text-[14px] font-medium transition-colors hover:text-gold whitespace-nowrap ${
+                  isActive ? 'text-gold font-bold' : 'text-dark'
                 }`}
               >
                 {item.label}
-              </a>
+              </Link>
             );
           })}
         </nav>
 
         {/* Phone Numbers */}
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden xl:flex items-center gap-4">
           <div className="flex items-center gap-2 text-sm text-dark">
             <FiPhone className="text-gold" size={14} />
             <span className="text-gray-medium text-[13px]">대표전화</span>
-            <span className="font-bold text-[15px]">02-598-9788</span>
+            <span className="font-bold text-[14px]">02-598-9788</span>
           </div>
           <div className="w-px h-5 bg-gray-border" />
           <div className="flex items-center gap-2 text-sm text-dark">
             <FiPhone className="text-gold" size={14} />
             <span className="text-gray-medium text-[13px]">임대/임차문의</span>
-            <span className="font-bold text-[15px]">010-3398-7678</span>
+            <span className="font-bold text-[14px]">010-3398-7678</span>
           </div>
           <div className="w-px h-5 bg-gray-border" />
           <a 
@@ -90,15 +94,16 @@ export default function Header() {
           {menuItems.map((item) => {
             const isActive = item.href === '/' ? pathname === '/' : pathname?.startsWith(item.href);
             return (
-              <a
+              <Link
                 key={item.label}
                 href={item.href}
                 className={`block text-[15px] font-medium py-2 ${
                   isActive ? 'text-gold' : 'text-dark'
                 }`}
+                onClick={() => setMobileOpen(false)}
               >
                 {item.label}
-              </a>
+              </Link>
             );
           })}
           <div className="pt-3 border-t border-gray-border">
