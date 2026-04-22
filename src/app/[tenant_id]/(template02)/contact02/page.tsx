@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from '@/components/templates/template01/Header01';
-import Footer from '@/components/templates/template01/Footer01';
 
 export default function ContactPage() {
   return (

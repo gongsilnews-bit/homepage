@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '@/components/templates/template01/Header01';
-import Footer from '@/components/templates/template01/Footer01';
+import Header from '@/components/templates/template02/Header02';
+import Footer from '@/components/templates/template02/Footer02';
 
 export default function AboutPage() {
   return (
@@ -10,9 +10,9 @@ export default function AboutPage() {
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative h-[300px] md:h-[400px] flex items-center justify-center overflow-hidden">
-          <img 
-            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80" 
-            alt="Office background" 
+          <img
+            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80"
+            alt="Office background"
             className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/50" />
@@ -27,9 +27,9 @@ export default function AboutPage() {
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <div className="w-full md:w-1/3">
               <div className="aspect-[3/4] bg-gray-100 rounded-lg overflow-hidden shadow-xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" 
-                  alt="CEO Portrait" 
+                <img
+                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80"
+                  alt="CEO Portrait"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -42,15 +42,15 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
                 <p>
-                  빌드온은 단순한 부동산 중개를 넘어, 기업의 비즈니스 성공을 위한 최적의 파트너가 되고자 탄생했습니다. 
+                  빌드온은 단순한 부동산 중개를 넘어, 기업의 비즈니스 성공을 위한 최적의 파트너가 되고자 탄생했습니다.
                   우리는 변화하는 시장 환경 속에서 정확한 데이터 분석과 깊이 있는 전문성을 바탕으로 고객 한 분 한 분께 맞춤형 솔루션을 제공하고 있습니다.
                 </p>
                 <p>
-                  상가, 사무실, 공장, 토지에 이르기까지 비즈니스 공간의 모든 영역에서 빌드온만의 검증된 네트워크와 노하우는 
+                  상가, 사무실, 공장, 토지에 이르기까지 비즈니스 공간의 모든 영역에서 빌드온만의 검증된 네트워크와 노하우는
                   고객의 소중한 자산 가치를 극대화하는 가장 강력한 도구가 될 것입니다.
                 </p>
                 <p>
-                  고객 여러분의 신뢰를 최우선 가치로 여기며, 정직하고 투명한 중개 문화를 선도해 나가겠습니다. 
+                  고객 여러분의 신뢰를 최우선 가치로 여기며, 정직하고 투명한 중개 문화를 선도해 나가겠습니다.
                   언제나 낮은 자세로 고객의 목소리에 귀 기울이며 함께 성장해 나가는 빌드온이 되겠습니다.
                 </p>
               </div>
