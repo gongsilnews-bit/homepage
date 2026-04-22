@@ -1,6 +1,6 @@
 import React from 'react';
-import Template01Layout from '../../templates/template01/layout';
-import PropertyDetail01 from '../../templates/template01/PropertyDetail01';
+import Template01Layout from '@/components/templates/template01/layout';
+import PropertyDetail01 from '@/components/templates/template01/PropertyDetail01';
 import { sampleProperties } from '@/data/sampleData';
 
 // TODO: Replace with dynamic DB property fetching in the future
