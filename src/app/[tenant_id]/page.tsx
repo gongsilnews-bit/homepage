@@ -1,6 +1,8 @@
-import Template01Layout from './templates/template01/layout';
+import Header01 from '@/components/templates/template01/Header01';
+import Footer01 from '@/components/templates/template01/Footer01';
+import Header02 from '@/components/templates/template02/Header02';
+import Footer02 from '@/components/templates/template02/Footer02';
 import Template01Page from './templates/template01/page';
-import Template02Layout from './templates/template02/layout';
 import Template02Page from './templates/template02/page';
 
 export const dynamic = 'force-dynamic';
@@ -12,15 +14,19 @@ export default async function TenantHomePage({ params }: { params: Promise<{ ten
 
   if (theme === 'Template02') {
     return (
-      <Template02Layout>
+      <div className="min-h-screen flex flex-col bg-[#fbfbfb] font-pretendard">
+        <Header02 />
         <Template02Page />
-      </Template02Layout>
+        <Footer02 />
+      </div>
     );
   }
   
   return (
-    <Template01Layout>
+    <div className="min-h-screen flex flex-col bg-[#fbfbfb] font-pretendard">
+      <Header01 />
       <Template01Page />
-    </Template01Layout>
+      <Footer01 />
+    </div>
   );
 }

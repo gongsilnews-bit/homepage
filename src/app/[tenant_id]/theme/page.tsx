@@ -11,17 +11,23 @@ export const revalidate = 0;
 
 export default async function ThemePage({ params }: { params: Promise<{ tenant_id: string }> }) {
   const resolvedParams = await params;
-  const isTemplate02 = resolvedParams.tenant_id === 'template02' || resolvedParams.tenant_id === 'templete02';
-  
-  const Header = isTemplate02 ? Header02 : Header01;
-  const Footer = isTemplate02 ? Footer02 : Footer01;
-  const ThemeList = isTemplate02 ? ThemeList02 : ThemeList01;
+  const theme = (resolvedParams.tenant_id === 'template02' || resolvedParams.tenant_id === 'templete02') ? 'Template02' : 'Template01';
+
+  if (theme === 'Template02') {
+    return (
+      <div className="min-h-screen flex flex-col bg-[#fbfbfb] font-pretendard">
+        <Header02 />
+        <ThemeList02 />
+        <Footer02 />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-[#fbfbfb] font-pretendard">
-      <Header />
-      <ThemeList />
-      <Footer />
+      <Header01 />
+      <ThemeList01 />
+      <Footer01 />
     </div>
   );
 }

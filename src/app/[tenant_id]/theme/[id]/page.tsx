@@ -1,6 +1,8 @@
 import React from 'react';
-import Template01Layout from '../../templates/template01/layout';
-import Template02Layout from '../../templates/template02/layout';
+import Header01 from '@/components/templates/template01/Header01';
+import Footer01 from '@/components/templates/template01/Footer01';
+import Header02 from '@/components/templates/template02/Header02';
+import Footer02 from '@/components/templates/template02/Footer02';
 import PropertyDetail01 from '@/components/templates/template01/PropertyDetail01';
 import PropertyDetail02 from '@/components/templates/template02/PropertyDetail02';
 import { sampleProperties } from '@/data/sampleData';
@@ -16,15 +18,19 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
 
   if (theme === 'Template02') {
     return (
-      <Template02Layout>
+      <div className="min-h-screen flex flex-col bg-[#fbfbfb] font-pretendard">
+        <Header02 />
         <PropertyDetail02 property={property} />
-      </Template02Layout>
+        <Footer02 />
+      </div>
     );
   }
 
   return (
-    <Template01Layout>
+    <div className="min-h-screen flex flex-col bg-[#fbfbfb] font-pretendard">
+      <Header01 />
       <PropertyDetail01 property={property} />
-    </Template01Layout>
+      <Footer01 />
+    </div>
   );
 }
