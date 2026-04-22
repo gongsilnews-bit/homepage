@@ -1,7 +1,9 @@
 import Template01Layout from './templates/template01/layout';
 import Template01Page from './templates/template01/page';
-import Template02Layout from './templates/template02/layout';
 import Template02Page from './templates/template02/page';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default function TenantHomePage({ params }: { params: { tenant_id: string } }) {
   // TODO: Fetch theme_name from Supabase and render Template01 or Template02
