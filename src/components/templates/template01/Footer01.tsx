@@ -27,19 +27,6 @@ export default function Footer01() {
         <div className="max-w-[1280px] mx-auto px-4">
           <div className="flex flex-wrap gap-8 py-4">
             {footerLinks.map((link) => {
-              if (link.external) {
-                return (
-                  <a
-                    key={link.label}
-                    href={link.path}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[14px] transition-colors hover:text-gold text-white/70"
-                  >
-                    {link.label}
-                  </a>
-                );
-              }
               return (
                 <Link
                   key={link.label}
