@@ -74,9 +74,9 @@ export default function PropertySection() {
 
         {/* More Button */}
         <div className="text-center mt-10">
-          <a
-            href="/properties"
-            className="inline-block border-2 border-gold text-gold hover:bg-gold hover:text-white font-bold text-[15px] px-12 py-3.5 rounded-lg transition-colors"
+          <a 
+            href="/theme" 
+            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-gold text-gold hover:bg-gold hover:text-white rounded transition-colors text-[14px] font-bold"
           >
             더보기
           </a>
