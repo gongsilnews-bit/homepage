@@ -91,13 +91,7 @@ export default function Header02() {
               {item.label}
             </Link>
           ))}
-          <div className="border-t border-gray-border pt-3 mt-2 space-y-2">
-            {utilMenuItems.map((item) => (
-              <Link key={item.label} href={item.path} className="block text-[13px] text-gray-medium py-1" onClick={() => setMobileOpen(false)}>
-                {item.label}
-              </Link>
-            ))}
-          </div>
+
           <div className="pt-3 border-t border-gray-border">
             <p className="text-sm text-gray-medium">문의전화 <span className="font-bold text-dark">010-2373-9378</span></p>
           </div>
