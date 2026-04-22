@@ -8,10 +8,10 @@ import { FaHome } from 'react-icons/fa';
 
 const mainMenuItems = [
   { label: '메인', path: '/' },
-  { label: '지도검색', path: '/map' },
-  { label: '테마물건', path: '/theme' },
-  { label: '뉴스기사', path: '/news' },
-  { label: '문의하기', path: '/request' },
+  { label: '지도검색', path: '/map02' },
+  { label: '테마물건', path: '/theme02' },
+  { label: '뉴스기사', path: '/news02' },
+  { label: '문의하기', path: '/request02' },
 ];
 
 
