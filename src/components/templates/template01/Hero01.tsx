@@ -1,8 +1,26 @@
 'use client';
 
+import { useMemo } from 'react';
+import { usePathname } from 'next/navigation';
 import { FiSearch } from 'react-icons/fi';
+import { useRouter } from 'next/navigation';
 
-export default function HeroSection() {
+export default function Hero01() {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const basePath = useMemo(() => {
+    if (typeof window !== 'undefined' && window.location.hostname.includes('template')) {
+      return '';
+    }
+    const match = pathname?.match(/^(\/[^/]+\/templates\/template01)/);
+    return match ? match[1] : '/templates/template01';
+  }, [pathname]);
+
+  const handleSearch = () => {
+    router.push(`${basePath}/map`);
+  };
+
   return (
     <section className="relative w-full min-h-[560px] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -44,7 +62,10 @@ export default function HeroSection() {
               className="w-full py-4 px-3 text-[15px] text-dark outline-none bg-transparent placeholder:text-gray-medium"
             />
           </div>
-          <button className="bg-gold hover:bg-gold-hover text-white font-bold text-[15px] px-8 py-4 transition-colors shrink-0">
+          <button 
+            onClick={handleSearch}
+            className="bg-gold hover:bg-gold-hover text-white font-bold text-[15px] px-8 py-4 transition-colors shrink-0"
+          >
             매물검색
           </button>
         </div>

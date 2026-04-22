@@ -2,29 +2,36 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
 import { FiPhone, FiMenu, FiX } from 'react-icons/fi';
 
 const menuItems = [
-  { label: '메인', href: '/' },
-  { label: '지도검색', href: '/map' },
-  { label: '전체매물보기', href: '/properties' },
-  { label: '뉴스기사', href: '/news' },
-  { label: '임대·임차의뢰', href: '/request' },
+  { label: '메인', path: '/' },
+  { label: '지도검색', path: '/map' },
+  { label: '전체매물보기', path: '/properties' },
+  { label: '뉴스기사', path: '/news' },
+  { label: '임대·임차의뢰', path: '/request' },
 ];
 
-export default function Header() {
+export default function Header01() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
+  const basePath = useMemo(() => {
+    if (typeof window !== 'undefined' && window.location.hostname.includes('template')) {
+      return '';
+    }
+    const match = pathname?.match(/^(\/[^/]+\/templates\/template01)/);
+    return match ? match[1] : '/templates/template01';
+  }, [pathname]);
+
   return (
     <header className="sticky top-0 z-50 bg-white border-b-[3px] border-gold shadow-sm">
-      <div className={`${pathname === '/map' ? 'w-full px-6' : 'max-w-[1280px] px-4'} mx-auto flex items-center justify-between h-[64px]`}>
+      <div className={`${pathname?.includes('/map') ? 'w-full px-6' : 'max-w-[1280px] px-4'} mx-auto flex items-center justify-between h-[64px]`}>
         {/* Left Section: Logo & Nav */}
         <div className="flex items-center gap-8 lg:gap-14">
-          {/* Logo */}
-          <Link href="/" className="flex items-center shrink-0">
+          <Link href={basePath || '/'} className="flex items-center shrink-0">
             <Image
               src="/images/buildon_logo_real.png"
               alt="빌드온 브랜드 로고"
@@ -35,14 +42,18 @@ export default function Header() {
             />
           </Link>
 
-          {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-6">
             {menuItems.map((item) => {
-              const isActive = item.href === '/' ? pathname === '/' : pathname?.startsWith(item.href);
+              const fullPath = `${basePath}${item.path}`;
+              // Make active logic smart
+              const isActive = item.path === '/' 
+                ? pathname === basePath || pathname === `${basePath}/`
+                : pathname?.includes(item.path);
+              
               return (
                 <Link
                   key={item.label}
-                  href={item.href}
+                  href={fullPath}
                   className={`text-[14px] font-medium transition-colors hover:text-gold whitespace-nowrap ${
                     isActive ? 'text-gold font-bold' : 'text-dark'
                   }`}
@@ -78,25 +89,22 @@ export default function Header() {
           </a>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden text-dark p-2"
-          aria-label="메뉴 열기"
-        >
+        <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden text-dark p-2" aria-label="메뉴 열기">
           {mobileOpen ? <FiX size={24} /> : <FiMenu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Nav */}
       {mobileOpen && (
         <div className="lg:hidden bg-white border-t border-gray-border px-4 py-4 space-y-3">
           {menuItems.map((item) => {
-            const isActive = item.href === '/' ? pathname === '/' : pathname?.startsWith(item.href);
+            const fullPath = `${basePath}${item.path}`;
+            const isActive = item.path === '/' 
+                ? pathname === basePath || pathname === `${basePath}/`
+                : pathname?.includes(item.path);
             return (
               <Link
                 key={item.label}
-                href={item.href}
+                href={fullPath}
                 className={`block text-[15px] font-medium py-2 ${
                   isActive ? 'text-gold' : 'text-dark'
                 }`}

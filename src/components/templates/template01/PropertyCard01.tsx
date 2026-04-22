@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
+import { usePathname } from 'next/navigation';
 import { FiChevronLeft, FiChevronRight, FiHeart } from 'react-icons/fi';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import type { Property } from '@/data/sampleData';
@@ -9,7 +10,16 @@ interface PropertyCardProps {
   property: Property;
 }
 
-export default function PropertyCard({ property }: PropertyCardProps) {
+export default function PropertyCard01({ property }: PropertyCardProps) {
+  const pathname = usePathname();
+  const basePath = useMemo(() => {
+    if (typeof window !== 'undefined' && window.location.hostname.includes('template')) {
+      return '';
+    }
+    const match = pathname?.match(/^(\/[^/]+\/templates\/template01)/);
+    return match ? match[1] : '/templates/template01';
+  }, [pathname]);
+
   const [currentImage, setCurrentImage] = useState(0);
   const [liked, setLiked] = useState(false);
 
@@ -35,7 +45,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
   const showRecommendBadge = property.badge === '추천' || property.badge === 'NEW+추천';
 
   return (
-    <a href={`/property/${property.id}`} className="block group">
+    <a href={`${basePath}/property/${property.id}`} className="block group">
       {/* Image Slider */}
       <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-gray-200">
         <img
@@ -107,7 +117,6 @@ export default function PropertyCard({ property }: PropertyCardProps) {
 
       {/* Property Info */}
       <div className="mt-3 px-0.5">
-        {/* Header: Number + Location */}
         <div className="flex items-start gap-2 mb-1">
           <span className="text-[12px] text-gray-medium font-medium shrink-0 mt-0.5 bg-gray-100 px-1.5 py-0.5 rounded">
             {property.number}
@@ -118,12 +127,10 @@ export default function PropertyCard({ property }: PropertyCardProps) {
           </div>
         </div>
 
-        {/* Description */}
         <p className="text-[13px] text-gray-medium leading-relaxed mb-3 line-clamp-1">
           {property.description}
         </p>
 
-        {/* Details Grid */}
         <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-[13px]">
           <div className="flex justify-between">
             <span className="text-gray-medium">전용면적</span>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import PropertyCard from './PropertyCard';
+import PropertyCard01 from './PropertyCard01';
 import { sampleProperties } from '@/data/sampleData';
 
 const filterTabs = [
@@ -59,9 +59,9 @@ export default function PropertySection() {
         </div>
 
         {/* Property Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredProperties.map((property) => (
-            <PropertyCard key={property.id} property={property} />
+            <PropertyCard01 key={property.id} property={property} />
           ))}
         </div>
 

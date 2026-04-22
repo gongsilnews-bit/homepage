@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import Header from '@/components/templates/template01/Header01';
+import Footer from '@/components/templates/template01/Footer01';
 
 export default function AboutPage() {
   return (

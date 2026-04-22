@@ -6,7 +6,7 @@ import Link from "next/link";
 import { getVacancies, getAgencyInfo, getVacancyDetail } from "@/app/actions/vacancy";
 import { getVacancyComments, createVacancyComment } from "@/app/actions/vacancyComments";
 import MapSearchBar from "@/components/MapSearchBar";
-import Header from "@/components/Header";
+import Header from "@/components/templates/template01/Header01";
 
 
 // 카테고리 설정 데이터

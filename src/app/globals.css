@@ -12,6 +12,13 @@
   --gray-medium: #888888;
   --gray-border: #E5E5E5;
   --orange: #F97316;
+  /* Oneroom theme tokens */
+  --teal: #2ECEC2;
+  --teal-dark: #1DB5A9;
+  --teal-light: #E0FAF7;
+  --coral: #F06B6B;
+  --coral-hover: #E05555;
+  --mint-bg: #F0FDFB;
 }
 
 @theme inline {
@@ -26,6 +33,12 @@
   --color-gray-medium: var(--gray-medium);
   --color-gray-border: var(--gray-border);
   --color-orange: var(--orange);
+  --color-teal: var(--teal);
+  --color-teal-dark: var(--teal-dark);
+  --color-teal-light: var(--teal-light);
+  --color-coral: var(--coral);
+  --color-coral-hover: var(--coral-hover);
+  --color-mint-bg: var(--mint-bg);
   --font-sans: 'Noto Sans KR', sans-serif;
 }
 

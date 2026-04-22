@@ -1,21 +1,14 @@
-import Header from '@/components/Header';
-import HeroSection from '@/components/HeroSection';
-import ThemeSection from '@/components/ThemeSection';
-import PropertySection from '@/components/PropertySection';
-import PartnerBanner from '@/components/PartnerBanner';
-import Footer from '@/components/Footer';
+import Template01Layout from './templates/template01/layout';
+import Template01Page from './templates/template01/page';
 
-export default function Home() {
+export default function TenantHomePage() {
+  // TODO: Fetch theme_name from Supabase and render Template01 or Template02
+  // For now, default to Template01 for existing agencies. 
+  // (Preview routes /preview/templates/template01 bypass this and go directly to the template page)
+  
   return (
-    <>
-      <Header />
-      <main className="flex-1">
-        <HeroSection />
-        <ThemeSection />
-        <PropertySection />
-        <PartnerBanner />
-      </main>
-      <Footer />
-    </>
+    <Template01Layout>
+      <Template01Page />
+    </Template01Layout>
   );
 }

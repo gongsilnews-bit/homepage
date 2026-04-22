@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import PropertyCard from '@/components/PropertyCard';
+import Header from '@/components/templates/template01/Header01';
+import Footer from '@/components/templates/template01/Footer01';
+import PropertyCard01 from '@/components/templates/template01/PropertyCard01';
 import { sampleProperties } from '@/data/sampleData';
 
 export default function PropertiesPage() {
@@ -119,7 +119,7 @@ export default function PropertiesPage() {
           {/* Grid Layout taking 4 columns on extremely large screens, 3 on large, 2 on medium */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {sampleProperties.map((property) => (
-              <PropertyCard key={property.id} property={property} />
+              <PropertyCard01 key={property.id} property={property} />
             ))}
           </div>
 
