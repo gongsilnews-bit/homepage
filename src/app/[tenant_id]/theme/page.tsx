@@ -9,8 +9,9 @@ import { sampleProperties } from '@/data/sampleData';
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-export default function ThemePage({ params }: { params: { tenant_id: string } }) {
-  const isTemplate02 = params.tenant_id === 'template02' || params.tenant_id === 'templete02';
+export default async function ThemePage({ params }: { params: Promise<{ tenant_id: string }> }) {
+  const resolvedParams = await params;
+  const isTemplate02 = resolvedParams.tenant_id === 'template02' || resolvedParams.tenant_id === 'templete02';
   const Header = isTemplate02 ? Header02 : Header01;
   const Footer = isTemplate02 ? Footer02 : Footer01;
 

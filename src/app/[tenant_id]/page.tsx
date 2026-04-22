@@ -6,9 +6,9 @@ import Template02Page from './templates/template02/page';
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-export default function TenantHomePage({ params }: { params: { tenant_id: string } }) {
-  // TODO: Fetch theme_name from Supabase and render Template01 or Template02
-  const theme = params.tenant_id === 'template02' || params.tenant_id === 'templete02' ? 'Template02' : 'Template01';
+export default async function TenantHomePage({ params }: { params: Promise<{ tenant_id: string }> }) {
+  const resolvedParams = await params;
+  const theme = resolvedParams.tenant_id === 'template02' || resolvedParams.tenant_id === 'templete02' ? 'Template02' : 'Template01';
 
   if (theme === 'Template02') {
     return (
