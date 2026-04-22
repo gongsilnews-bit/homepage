@@ -18,20 +18,16 @@ export default function Header01() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
-  const basePath = useMemo(() => {
-    if (typeof window !== 'undefined' && window.location.hostname.includes('template')) {
-      return '';
-    }
-    const match = pathname?.match(/^(\/[^/]+\/templates\/template01)/);
-    return match ? match[1] : '/templates/template01';
-  }, [pathname]);
+  // Live mode base routing relies purely on middleware.
+  // isActive relies purely on path segments.
+  const isRoot = pathname?.split('/').filter(Boolean).length === 1;
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b-[3px] border-gold shadow-sm">
       <div className={`${pathname?.includes('/map') ? 'w-full px-6' : 'max-w-[1280px] px-4'} mx-auto flex items-center justify-between h-[64px]`}>
         {/* Left Section: Logo & Nav */}
         <div className="flex items-center gap-8 lg:gap-14">
-          <Link href={basePath || '/'} className="flex items-center shrink-0">
+          <Link href="/" className="flex items-center shrink-0">
             <Image
               src="/images/buildon_logo_real.png"
               alt="빌드온 브랜드 로고"
@@ -44,11 +40,8 @@ export default function Header01() {
 
           <nav className="hidden lg:flex items-center gap-6">
             {menuItems.map((item) => {
-              const fullPath = `${basePath}${item.path}`;
-              // Make active logic smart
-              const isActive = item.path === '/' 
-                ? pathname === basePath || pathname === `${basePath}/`
-                : pathname?.includes(item.path);
+              const fullPath = item.path;
+              const isActive = item.path === '/' ? isRoot : pathname?.includes(item.path);
               
               return (
                 <Link
@@ -97,10 +90,8 @@ export default function Header01() {
       {mobileOpen && (
         <div className="lg:hidden bg-white border-t border-gray-border px-4 py-4 space-y-3">
           {menuItems.map((item) => {
-            const fullPath = `${basePath}${item.path}`;
-            const isActive = item.path === '/' 
-                ? pathname === basePath || pathname === `${basePath}/`
-                : pathname?.includes(item.path);
+            const fullPath = item.path;
+            const isActive = item.path === '/' ? isRoot : pathname?.includes(item.path);
             return (
               <Link
                 key={item.label}

@@ -14,13 +14,6 @@ const footerLinks = [
 
 export default function Footer02() {
   const pathname = usePathname();
-  const basePath = useMemo(() => {
-    if (typeof window !== 'undefined' && window.location.hostname.includes('template')) {
-      return '';
-    }
-    const match = pathname?.match(/^(\/[^/]+\/templates\/template02)/);
-    return match ? match[1] : '/templates/template02';
-  }, [pathname]);
 
   return (
     <footer className="bg-[#3B3B3B] text-white">
@@ -29,7 +22,7 @@ export default function Footer02() {
           {footerLinks.map((link, idx) => (
             <span key={link.label} className="flex items-center gap-6">
               <Link
-                href={`${basePath}${link.path}`}
+                href={link.path}
                 className={`text-[13px] hover:text-teal transition-colors ${
                   link.label === '개인정보처리방침' ? 'font-bold' : 'text-white/80'
                 }`}

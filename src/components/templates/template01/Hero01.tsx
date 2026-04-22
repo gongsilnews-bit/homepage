@@ -9,16 +9,10 @@ export default function Hero01() {
   const router = useRouter();
   const pathname = usePathname();
 
-  const basePath = useMemo(() => {
-    if (typeof window !== 'undefined' && window.location.hostname.includes('template')) {
-      return '';
-    }
-    const match = pathname?.match(/^(\/[^/]+\/templates\/template01)/);
-    return match ? match[1] : '/templates/template01';
-  }, [pathname]);
+
 
   const handleSearch = () => {
-    router.push(`${basePath}/map`);
+    router.push(`/map`);
   };
 
   return (

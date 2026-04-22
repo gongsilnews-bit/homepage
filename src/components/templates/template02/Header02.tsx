@@ -26,14 +26,7 @@ export default function Header02() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
-  const basePath = useMemo(() => {
-    // If accessing via template subdomain directly (e.g., template02.gongsilnews.com), no base path is needed
-    if (typeof window !== 'undefined' && window.location.hostname.includes('template')) {
-      return '';
-    }
-    const match = pathname?.match(/^(\/[^/]+\/templates\/template02)/);
-    return match ? match[1] : '/templates/template02';
-  }, [pathname]);
+  const isRoot = pathname?.split('/').filter(Boolean).length === 1;
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm">
@@ -43,7 +36,7 @@ export default function Header02() {
           {utilMenuItems.map((item) => (
             <Link
               key={item.label}
-              href={`${basePath}${item.path}`}
+              href={item.path}
               className="text-[12px] text-gray-medium hover:text-teal transition-colors"
             >
               {item.label}
@@ -55,7 +48,7 @@ export default function Header02() {
       {/* Main Nav */}
       <div className="max-w-[1280px] mx-auto px-4 flex items-center justify-between h-[64px]">
         <div className="flex items-center gap-8 lg:gap-12">
-          <Link href={basePath} className="flex items-center gap-2 shrink-0">
+          <Link href="/" className="flex items-center gap-2 shrink-0">
             <FaHome className="text-teal text-2xl" />
             <span className="text-xl font-bold text-dark">
               여기와<span className="text-teal">방</span>
@@ -68,7 +61,7 @@ export default function Header02() {
               return (
                 <Link
                   key={item.label}
-                  href={`${basePath}${item.path}`}
+                  href={item.path}
                   className={`text-[14px] font-semibold transition-colors hover:text-teal whitespace-nowrap ${
                     isActive ? 'text-teal' : 'text-dark'
                   }`}
@@ -98,13 +91,13 @@ export default function Header02() {
       {mobileOpen && (
         <div className="lg:hidden bg-white border-t border-gray-border px-4 py-4 space-y-2">
           {mainMenuItems.map((item) => (
-            <Link key={item.label} href={`${basePath}${item.path}`} className="block text-[15px] font-medium py-2 text-dark hover:text-teal" onClick={() => setMobileOpen(false)}>
+            <Link key={item.label} href={item.path} className="block text-[15px] font-medium py-2 text-dark hover:text-teal" onClick={() => setMobileOpen(false)}>
               {item.label}
             </Link>
           ))}
           <div className="border-t border-gray-border pt-3 mt-2 space-y-2">
             {utilMenuItems.map((item) => (
-              <Link key={item.label} href={`${basePath}${item.path}`} className="block text-[13px] text-gray-medium py-1" onClick={() => setMobileOpen(false)}>
+              <Link key={item.label} href={item.path} className="block text-[13px] text-gray-medium py-1" onClick={() => setMobileOpen(false)}>
                 {item.label}
               </Link>
             ))}

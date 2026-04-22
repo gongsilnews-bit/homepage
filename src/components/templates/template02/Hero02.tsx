@@ -19,13 +19,6 @@ const roomTypes = [
 
 export default function Hero02() {
   const pathname = usePathname();
-  const basePath = useMemo(() => {
-    if (typeof window !== 'undefined' && window.location.hostname.includes('template')) {
-      return '';
-    }
-    const match = pathname?.match(/^(\/[^/]+\/templates\/template02)/);
-    return match ? match[1] : '/templates/template02';
-  }, [pathname]);
 
   return (
     <section>
@@ -73,7 +66,7 @@ export default function Hero02() {
             return (
               <Link
                 key={room.label}
-                href={`${basePath}${room.href}`}
+                href={room.href}
                 className="flex flex-col items-center gap-2 group cursor-pointer"
               >
                 <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gray-light flex items-center justify-center group-hover:bg-teal-light transition-colors">

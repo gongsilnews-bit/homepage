@@ -17,13 +17,6 @@ const footerLinks = [
 
 export default function Footer01() {
   const pathname = usePathname();
-  const basePath = useMemo(() => {
-    if (typeof window !== 'undefined' && window.location.hostname.includes('template')) {
-      return '';
-    }
-    const match = pathname?.match(/^(\/[^/]+\/templates\/template01)/);
-    return match ? match[1] : '/templates/template01';
-  }, [pathname]);
 
   return (
     <footer className="bg-dark text-white">
@@ -48,7 +41,7 @@ export default function Footer01() {
               return (
                 <Link
                   key={link.label}
-                  href={`${basePath}${link.path}`}
+                  href={link.path}
                   className={`text-[14px] transition-colors hover:text-gold ${
                     link.label === '개인정보취급방침' ? 'font-bold text-white' : 'text-white/70'
                   }`}

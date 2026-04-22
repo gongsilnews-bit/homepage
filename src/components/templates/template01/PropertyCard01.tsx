@@ -12,13 +12,6 @@ interface PropertyCardProps {
 
 export default function PropertyCard01({ property }: PropertyCardProps) {
   const pathname = usePathname();
-  const basePath = useMemo(() => {
-    if (typeof window !== 'undefined' && window.location.hostname.includes('template')) {
-      return '';
-    }
-    const match = pathname?.match(/^(\/[^/]+\/templates\/template01)/);
-    return match ? match[1] : '/templates/template01';
-  }, [pathname]);
 
   const [currentImage, setCurrentImage] = useState(0);
   const [liked, setLiked] = useState(false);
@@ -45,7 +38,7 @@ export default function PropertyCard01({ property }: PropertyCardProps) {
   const showRecommendBadge = property.badge === '추천' || property.badge === 'NEW+추천';
 
   return (
-    <a href={`${basePath}/property/${property.id}`} className="block group">
+    <a href={`/property/${property.id}`} className="block group">
       {/* Image Slider */}
       <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-gray-200">
         <img
