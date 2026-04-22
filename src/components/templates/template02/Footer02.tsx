@@ -6,12 +6,12 @@ import Link from 'next/link';
 import { FaHome } from 'react-icons/fa';
 
 const footerLinks = [
-  { label: '회사소개', path: '/about' },
-  { label: '오시는 길', path: '/location' },
-  { label: '공지사항', path: '/board' },
-  { label: '의뢰하기', path: '/request' },
-  { label: '이용약관', path: '/terms' },
-  { label: '개인정보처리방침', path: '/privacy' },
+  { label: '회사소개', path: '/about02' },
+  { label: '오시는 길', path: '/location02' },
+  { label: '공지사항', path: '/board02' },
+  { label: '의뢰하기', path: '/request02' },
+  { label: '이용약관', path: '/terms02' },
+  { label: '개인정보처리방침', path: '/privacy02' },
 ];
 
 export default function Footer02() {

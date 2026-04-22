@@ -38,7 +38,7 @@ export default function PropertyCard01({ property }: PropertyCardProps) {
   const showRecommendBadge = property.badge === '추천' || property.badge === 'NEW+추천';
 
   return (
-    <a href={`/theme/${property.id}`} className="block group">
+    <a href={`/theme01/${property.id}`} className="block group">
       {/* Image Slider */}
       <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-gray-200">
         <img

@@ -50,7 +50,7 @@ export default function ThemeSection() {
           {themes.map((theme) => (
             <a
               key={theme.id}
-              href={`/theme/${theme.id}`}
+              href={`/theme01/${theme.id}`}
               className="theme-card aspect-[4/3] rounded-lg"
             >
               {/* Background Image */}

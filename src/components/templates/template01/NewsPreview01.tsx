@@ -23,7 +23,7 @@ export default function NewsPreview01() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {newsItems.map((news) => (
-            <Link key={news.id} href={`/news/${news.id}`} className="group block">
+            <Link key={news.id} href={`/news01/${news.id}`} className="group block">
               <div className="aspect-[16/10] overflow-hidden rounded-xl mb-4 bg-gray-100">
                 <img src={news.img} alt={news.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
