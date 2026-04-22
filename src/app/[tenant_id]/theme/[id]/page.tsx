@@ -2,6 +2,7 @@ import React from 'react';
 import Template01Layout from '../../templates/template01/layout';
 import Template02Layout from '../../templates/template02/layout';
 import PropertyDetail01 from '@/components/templates/template01/PropertyDetail01';
+import PropertyDetail02 from '@/components/templates/template02/PropertyDetail02';
 import { sampleProperties } from '@/data/sampleData';
 
 // TODO: Replace with dynamic DB property fetching in the future
@@ -14,10 +15,9 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
   const theme = (resolvedParams.tenant_id === 'template02' || resolvedParams.tenant_id === 'templete02') ? 'Template02' : 'Template01';
 
   if (theme === 'Template02') {
-    // For now, template02 falls back to 01 layout until PropertyDetail02 is created, but we use Template02Layout for Header/Footer!
     return (
       <Template02Layout>
-        <PropertyDetail01 property={property} />
+        <PropertyDetail02 property={property} />
       </Template02Layout>
     );
   }
