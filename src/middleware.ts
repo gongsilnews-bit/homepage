@@ -28,18 +28,7 @@ export function middleware(req: NextRequest) {
       return NextResponse.next();
     }
   }
-  // Map template subdomains directly to their preview routes
-  if (tenant_id === 'template01' || tenant_id === 'template02' || tenant_id === 'templete01' || tenant_id === 'templete02') {
-    const targetTemplate = tenant_id.replace('templete', 'template');
-    
-    // If accessing root, rewrite to the template preview page
-    if (url.pathname === '/' || url.pathname === '') {
-      url.pathname = `/preview/templates/${targetTemplate}`;
-    } else {
-      url.pathname = `/preview/templates/${targetTemplate}${url.pathname}`;
-    }
-    return NextResponse.rewrite(url);
-  }
+
 
   // Rewrite URL transparently to the /[tenant_id] dynamic route
   // For normal agencies:
