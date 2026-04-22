@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { FiPhone, FiMenu, FiX, FiUser } from 'react-icons/fi';
 import { FaHome } from 'react-icons/fa';
@@ -18,12 +18,21 @@ const mainMenuItems = [
 
 export default function Header02() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const isRoot = pathname?.split('/').filter(Boolean).length === 1;
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
+    <header className={`sticky top-0 z-50 bg-white transition-all duration-300 ${isScrolled ? 'border-b-2 border-teal shadow-md' : 'shadow-sm'}`}>
 
 
       {/* Main Nav */}
