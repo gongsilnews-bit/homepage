@@ -1,8 +1,9 @@
 import { Suspense } from 'react';
-import MapClient from './MapClient';
 import { getVacancies } from '@/app/actions/vacancy';
 import Header01 from '@/components/templates/template01/Header01';
 import Header02 from '@/components/templates/template02/Header02';
+import Map01 from '@/components/templates/template01/Map01';
+import Map02 from '@/components/templates/template02/Map02';
 
 export const revalidate = 60;
 
@@ -24,7 +25,7 @@ export default async function MapSearchPage({ params }: { params: Promise<{ tena
         <Header02 />
         <main className="flex-1 min-h-0">
           <Suspense fallback={<div style={{ padding: "50px", textAlign: "center" }}>Loading Maps...</div>}>
-            <MapClient initialVacancies={initialVacancies} hideHeader={true} />
+            <Map02 initialVacancies={initialVacancies} hideHeader={true} />
           </Suspense>
         </main>
       </div>
@@ -36,7 +37,7 @@ export default async function MapSearchPage({ params }: { params: Promise<{ tena
       <Header01 />
       <main className="flex-1 min-h-0">
         <Suspense fallback={<div style={{ padding: "50px", textAlign: "center" }}>Loading Maps...</div>}>
-          <MapClient initialVacancies={initialVacancies} hideHeader={true} />
+          <Map01 initialVacancies={initialVacancies} hideHeader={true} />
         </Suspense>
       </main>
     </div>
