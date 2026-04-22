@@ -1,24 +1,23 @@
 import React from 'react';
 import Template01Layout from '../templates/template01/layout';
 import Template02Layout from '../templates/template02/layout';
-import Template01NewsPage from '../templates/template01/news/page';
-import Template02NewsPage from '../templates/template02/news/page';
+import Template01PrivacyPage from '../templates/template01/privacy/page';
+import Template02PrivacyPage from '../templates/template02/privacy/page';
 
-export default function TenantNewsPage({ params }: { params: { tenant_id: string } }) {
-  // TODO: 런타임 시 DB에서 tenant_id로 조회한 theme_name을 가져옵니다.
+export default function TenantPrivacyPage({ params }: { params: { tenant_id: string } }) {
   const theme = params.tenant_id === 'template02' ? 'Template02' : 'Template01';
 
   if (theme === 'Template02') {
     return (
       <Template02Layout>
-        <Template02NewsPage />
+        <Template02PrivacyPage />
       </Template02Layout>
     );
   }
 
   return (
     <Template01Layout>
-      <Template01NewsPage />
+      <Template01PrivacyPage />
     </Template01Layout>
   );
 }
