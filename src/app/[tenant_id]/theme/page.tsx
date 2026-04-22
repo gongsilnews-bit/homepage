@@ -1,10 +1,19 @@
 import React from 'react';
-import Header from '@/components/templates/template01/Header01';
-import Footer from '@/components/templates/template01/Footer01';
+import Header01 from '@/components/templates/template01/Header01';
+import Footer01 from '@/components/templates/template01/Footer01';
+import Header02 from '@/components/templates/template02/Header02';
+import Footer02 from '@/components/templates/template02/Footer02';
 import PropertyCard01 from '@/components/templates/template01/PropertyCard01';
 import { sampleProperties } from '@/data/sampleData';
 
-export default function PropertiesPage() {
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
+export default function ThemePage({ params }: { params: { tenant_id: string } }) {
+  const isTemplate02 = params.tenant_id === 'template02' || params.tenant_id === 'templete02';
+  const Header = isTemplate02 ? Header02 : Header01;
+  const Footer = isTemplate02 ? Footer02 : Footer01;
+
   return (
     <div className="min-h-screen flex flex-col bg-[#fbfbfb] font-pretendard">
       <Header />
