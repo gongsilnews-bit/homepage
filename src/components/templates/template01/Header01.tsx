@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
-import { FiPhone, FiMenu, FiX } from 'react-icons/fi';
+import { FiPhone, FiMenu, FiX, FiUser } from 'react-icons/fi';
 
 const menuItems = [
   { label: '메인', path: '/' },
@@ -78,6 +78,15 @@ export default function Header01() {
             className="text-[13px] font-medium bg-dark text-white px-3 py-1.5 rounded hover:bg-gold transition-colors"
           >
             매물 관리
+          </a>
+          <a 
+            href="http://localhost:3000/realty_admin" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex flex-col items-center justify-center gap-0.5 text-gray-medium hover:text-gold transition-colors ml-2"
+          >
+            <FiUser size={18} />
+            <span className="text-[10px] font-medium leading-none">로그인/회원가입</span>
           </a>
         </div>
 

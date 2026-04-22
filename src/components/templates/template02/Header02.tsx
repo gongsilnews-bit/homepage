@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
-import { FiPhone, FiMenu, FiX } from 'react-icons/fi';
+import { FiPhone, FiMenu, FiX, FiUser } from 'react-icons/fi';
 import { FaHome } from 'react-icons/fa';
 
 const mainMenuItems = [
@@ -75,8 +75,23 @@ export default function Header02() {
             <span className="text-[12px] text-gray-medium">문의전화</span>
             <span className="font-bold text-[14px] text-dark">010-2373-9378</span>
           </div>
-          <Link href="/login" className="text-[13px] text-gray-medium hover:text-teal transition-colors">로그인</Link>
-          <Link href="/register" className="text-[13px] text-gray-medium hover:text-teal transition-colors">회원가입</Link>
+          <a 
+            href="http://localhost:3000/realty_admin" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-[13px] font-medium bg-dark text-white px-3 py-1.5 rounded hover:bg-teal transition-colors ml-4"
+          >
+            매물 관리
+          </a>
+          <a 
+            href="http://localhost:3000/realty_admin" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex flex-col items-center justify-center gap-0.5 text-gray-medium hover:text-teal transition-colors ml-2"
+          >
+            <FiUser size={18} />
+            <span className="text-[10px] font-medium leading-none">로그인/회원가입</span>
+          </a>
         </div>
 
         <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden text-dark p-2" aria-label="메뉴 열기">
