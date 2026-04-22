@@ -15,7 +15,7 @@ export default async function Template01MapPage() {
 
   return (
     <Suspense fallback={<div style={{ padding: "50px", textAlign: "center" }}>Loading Maps...</div>}>
-      <MapClient initialVacancies={initialVacancies} />
+      <MapClient initialVacancies={initialVacancies} hideHeader={true} />
     </Suspense>
   );
 }

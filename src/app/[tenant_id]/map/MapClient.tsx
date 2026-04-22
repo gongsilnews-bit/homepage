@@ -75,7 +75,7 @@ const MAINT_PRESETS = [
   { label: "30만 이상", min: 300000, max: Infinity },
 ];
 
-export default function MapClient({ initialVacancies }: { initialVacancies: any[] }) {
+export default function MapClient({ initialVacancies, hideHeader = false }: { initialVacancies: any[], hideHeader?: boolean }) {
   /* ── State & Refs ── */
   const searchParams = useSearchParams();
   const [dbVacancies, setDbVacancies] = useState<any[]>(initialVacancies);
@@ -958,7 +958,7 @@ export default function MapClient({ initialVacancies }: { initialVacancies: any[
 
   return (
     <div style={{ height: "100vh", display: "flex", flexDirection: "column", overflow: "hidden", fontFamily: "'Pretendard', sans-serif" }}>
-      <Header />
+      {!hideHeader && <Header />}
       {/* ===== 상단 필터 바 ===== */}
       <div style={{ background: "#fff", width: "100%", zIndex: 200, position: "relative", borderBottom: "1px solid #ccc", flexShrink: 0 }}>
 
