@@ -14,10 +14,7 @@ const mainMenuItems = [
   { label: '문의하기', path: '/request' },
 ];
 
-const utilMenuItems = [
-  { label: '공지사항', path: '/board' },
-  { label: '회사소개', path: '/about' },
-];
+
 
 export default function Header02() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -27,20 +24,7 @@ export default function Header02() {
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm">
-      {/* Top Utility Bar */}
-      <div className="hidden lg:block border-b border-gray-border">
-        <div className="max-w-[1280px] mx-auto px-4 flex items-center justify-end gap-5 h-[36px]">
-          {utilMenuItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.path}
-              className="text-[12px] text-gray-medium hover:text-teal transition-colors"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
-      </div>
+
 
       {/* Main Nav */}
       <div className="max-w-[1280px] mx-auto px-4 flex items-center justify-between h-[64px]">
