@@ -2,12 +2,56 @@
 
 import { useState } from 'react';
 import { FiSend, FiHome, FiSearch } from 'react-icons/fi';
+import DaumPostcode from 'react-daum-postcode';
 
 export default function Template02RequestPage() {
-  const [activeTab, setActiveTab] = useState<'구해요' | '내놔요'>('구해요');
+  const [activeTab, setActiveTab] = useState<'구해요' | '내놔요'>('내놔요'); // DEFAULT TO '내놔요'
+  const [isPostcodeOpen, setIsPostcodeOpen] = useState(false);
+  const [zipcode, setZipcode] = useState('');
+  const [address, setAddress] = useState('');
+
+  const handleComplete = (data: any) => {
+    let fullAddress = data.address;
+    let extraAddress = '';
+
+    if (data.addressType === 'R') {
+      if (data.bname !== '') extraAddress += data.bname;
+      if (data.buildingName !== '') {
+        extraAddress += extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
+      }
+      fullAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
+    }
+
+    setAddress(fullAddress);
+    setZipcode(data.zonecode);
+    setIsPostcodeOpen(false);
+  };
 
   return (
-    <div className="max-w-[800px] mx-auto px-4 py-16">
+    <div className="max-w-[800px] mx-auto px-4 py-16 relative">
+      
+      {/* Daum Postcode Modal */}
+      {isPostcodeOpen && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div className="bg-white w-full max-w-[500px] rounded-xl overflow-hidden shadow-2xl relative">
+            <div className="flex justify-between items-center p-4 border-b border-gray-100 bg-gray-50">
+              <h3 className="font-bold text-lg text-dark">주소 찾기</h3>
+              <button 
+                type="button"
+                onClick={() => setIsPostcodeOpen(false)} 
+                className="w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-gray-200 rounded-full transition-colors"
+                title="닫기"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="h-[400px] w-full">
+              <DaumPostcode onComplete={handleComplete} style={{ height: '100%' }} />
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="mb-10 text-center">
         <h1 className="text-3xl font-bold text-dark mb-2">매물 의뢰하기</h1>
         <p className="text-gray-medium text-[14px]">원하시는 조건을 남겨주시거나 소중한 매물을 의뢰하시면 빠르게 연결해 드립니다.</p>
@@ -101,11 +145,14 @@ export default function Template02RequestPage() {
 
               <div>
                 <label className="text-[13px] font-semibold text-dark mb-1.5 block">물건 주소 <span className="text-coral">*</span></label>
-                <div className="flex gap-2 mb-2">
-                  <input type="text" className="flex-1 bg-gray-50 border border-gray-border rounded-lg px-4 py-3 text-[14px]" placeholder="우편번호 검색" readOnly />
-                  <button type="button" className="bg-dark text-white px-6 py-3 rounded-lg font-bold text-[13px] hover:bg-black">주소 찾기</button>
+                <div className="flex flex-col gap-2 mb-2">
+                  <div className="flex gap-2">
+                    <input type="text" value={zipcode} placeholder="우편번호 검색" className="flex-1 max-w-[150px] bg-gray-50 border border-gray-border rounded-lg px-4 py-3 text-[14px] outline-none" readOnly />
+                    <button type="button" onClick={() => setIsPostcodeOpen(true)} className="bg-dark text-white px-6 py-3 rounded-lg font-bold text-[13px] hover:bg-black transition-colors shrink-0">주소 찾기</button>
+                  </div>
+                  <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="검색된 주소가 입력됩니다" className="w-full bg-gray-50 border border-gray-border rounded-lg px-4 py-3 outline-none text-[14px]" readOnly />
+                  <input type="text" placeholder="상세 주소 및 호수를 입력해 주세요" className="w-full border border-gray-border rounded-lg px-4 py-3 outline-none focus:border-dark text-[14px]" />
                 </div>
-                <input type="text" className="w-full border border-gray-border rounded-lg px-4 py-3 outline-none focus:border-dark text-[14px]" placeholder="상세 주소 및 호수" />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

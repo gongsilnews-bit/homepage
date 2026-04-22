@@ -1,13 +1,56 @@
 'use client';
 
 import React, { useState } from 'react';
+import DaumPostcode from 'react-daum-postcode';
 
 export default function Template01RequestPage() {
   const [activeTab, setActiveTab] = useState<'rent' | 'lease'>('rent');
+  const [isPostcodeOpen, setIsPostcodeOpen] = useState(false);
+  const [zipcode, setZipcode] = useState('');
+  const [address, setAddress] = useState('');
+
+  const handleComplete = (data: any) => {
+    let fullAddress = data.address;
+    let extraAddress = '';
+
+    if (data.addressType === 'R') {
+      if (data.bname !== '') extraAddress += data.bname;
+      if (data.buildingName !== '') {
+        extraAddress += extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
+      }
+      fullAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
+    }
+
+    setAddress(fullAddress);
+    setZipcode(data.zonecode);
+    setIsPostcodeOpen(false);
+  };
 
   return (
-    <div className="w-full max-w-[1024px] mx-auto px-4 py-12 md:py-16">
+    <div className="w-full max-w-[1024px] mx-auto px-4 py-12 md:py-16 relative">
       
+      {/* Daum Postcode Modal */}
+      {isPostcodeOpen && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div className="bg-white w-full max-w-[500px] rounded-xl overflow-hidden shadow-2xl relative">
+            <div className="flex justify-between items-center p-4 border-b border-gray-100 bg-gray-50">
+              <h3 className="font-bold text-lg text-dark">주소 찾기</h3>
+              <button 
+                type="button"
+                onClick={() => setIsPostcodeOpen(false)} 
+                className="w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-gray-200 rounded-full transition-colors"
+                title="닫기"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="h-[400px] w-full">
+              <DaumPostcode onComplete={handleComplete} style={{ height: '100%' }} />
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Page Title */}
       <h1 className="text-3xl font-bold text-center text-gray-900 mb-8 mt-4 tracking-tight">임대·임차 의뢰</h1>
 
@@ -75,15 +118,16 @@ export default function Template01RequestPage() {
               </div>
 
               <div className="flex flex-col md:flex-row border-b border-gray-200">
-                <div className="bg-gray-50 md:w-[180px] p-4 flex items-center shrink-0">
-                  <label className="text-[14px] font-bold text-gray-700">물건 접수 주소 <span className="text-gold">*</span></label>
+                <div className="bg-gray-50 md:w-[180px] p-4 flex items-start pt-5 shrink-0">
+                  <label className="text-[14px] font-bold text-gray-700 mt-2">물건 접수 주소 <span className="text-gold">*</span></label>
                 </div>
                 <div className="flex-1 p-4 bg-white flex flex-col gap-2">
                   <div className="flex gap-2">
-                    <input type="text" placeholder="우편번호 찾기" className="flex-1 max-w-[200px] px-3 py-2 border border-gray-300 rounded bg-gray-50 text-[14px]" readOnly />
-                    <button className="bg-gray-800 text-white px-4 py-2 text-[13px] font-bold rounded">주소검색</button>
+                    <input type="text" value={zipcode} placeholder="우편번호 검색" className="flex-1 max-w-[200px] px-3 py-2 border border-gray-300 rounded bg-gray-50 text-[14px] outline-none" readOnly />
+                    <button type="button" onClick={() => setIsPostcodeOpen(true)} className="bg-gray-800 text-white px-4 py-2 text-[13px] font-bold rounded hover:bg-black transition-colors">주소검색</button>
                   </div>
-                  <input type="text" placeholder="상세 주소 및 호수" className="w-full px-3 py-2 border border-gray-300 rounded text-[14px] focus:outline-none focus:border-gold" />
+                  <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="검색 결과 주소가 입력됩니다" className="w-full px-3 py-2 border border-gray-300 rounded text-[14px] outline-none bg-gray-50" readOnly />
+                  <input type="text" placeholder="상세 주소 및 호수를 입력해 주세요" className="w-full px-3 py-2 border border-gray-300 rounded text-[14px] focus:outline-none focus:border-gold" />
                 </div>
               </div>
 
@@ -94,12 +138,12 @@ export default function Template01RequestPage() {
                 <div className="flex-1 p-4 bg-white flex flex-col gap-3">
                   <div className="flex items-center gap-2">
                     <span className="text-[14px] w-14">보증금</span>
-                    <input type="text" placeholder="숫자만 입력" className="w-full max-w-[150px] px-3 py-2 border border-gray-300 rounded text-right text-[14px] focus:border-gold" />
+                    <input type="text" placeholder="숫자만 입력" className="w-full max-w-[150px] px-3 py-2 border border-gray-300 rounded text-right text-[14px] focus:border-gold outline-none" />
                     <span className="text-[14px]">만원</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-[14px] w-14">월세</span>
-                    <input type="text" placeholder="숫자만 입력" className="w-full max-w-[150px] px-3 py-2 border border-gray-300 rounded text-right text-[14px] focus:border-gold" />
+                    <input type="text" placeholder="숫자만 입력" className="w-full max-w-[150px] px-3 py-2 border border-gray-300 rounded text-right text-[14px] focus:border-gold outline-none" />
                     <span className="text-[14px]">만원</span>
                   </div>
                 </div>
@@ -132,7 +176,7 @@ export default function Template01RequestPage() {
                   <label className="text-[14px] font-bold text-gray-700">의뢰인 성함 <span className="text-gold">*</span></label>
                 </div>
                 <div className="flex-1 p-4 bg-white">
-                  <input type="text" placeholder="성함을 입력해주세요" className="w-full md:w-[320px] px-3 py-2 border border-gray-300 rounded text-[14px] focus:outline-none focus:border-gold" />
+                  <input type="text" placeholder="성함을 입력해주세요" className="w-full md:w-[320px] px-3 py-2 border border-gray-300 rounded text-[14px] focus:outline-none focus:border-gold outline-none" />
                 </div>
               </div>
 
@@ -141,7 +185,7 @@ export default function Template01RequestPage() {
                   <label className="text-[14px] font-bold text-gray-700">연락처 <span className="text-gold">*</span></label>
                 </div>
                 <div className="flex-1 p-4 bg-white">
-                  <input type="text" placeholder="010-0000-0000" className="w-full md:w-[320px] px-3 py-2 border border-gray-300 rounded text-[14px] focus:outline-none focus:border-gold" />
+                  <input type="text" placeholder="010-0000-0000" className="w-full md:w-[320px] px-3 py-2 border border-gray-300 rounded text-[14px] focus:outline-none focus:border-gold outline-none" />
                 </div>
               </div>
 
@@ -161,12 +205,12 @@ export default function Template01RequestPage() {
                 <div className="flex-1 p-4 bg-white flex flex-col gap-3">
                   <div className="flex items-center gap-2">
                     <span className="text-[14px] w-14">보증금</span>
-                    <input type="text" placeholder="숫자만 입력" className="w-full max-w-[150px] px-3 py-2 border border-gray-300 rounded text-right text-[14px] focus:border-gold" />
+                    <input type="text" placeholder="숫자만 입력" className="w-full max-w-[150px] px-3 py-2 border border-gray-300 rounded text-right text-[14px] focus:border-gold outline-none" />
                     <span className="text-[14px]">만원</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-[14px] w-14">월세</span>
-                    <input type="text" placeholder="숫자만 입력" className="w-full max-w-[150px] px-3 py-2 border border-gray-300 rounded text-right text-[14px] focus:border-gold" />
+                    <input type="text" placeholder="숫자만 입력" className="w-full max-w-[150px] px-3 py-2 border border-gray-300 rounded text-right text-[14px] focus:border-gold outline-none" />
                     <span className="text-[14px]">만원 (최대)</span>
                   </div>
                 </div>
