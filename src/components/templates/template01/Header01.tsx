@@ -9,6 +9,7 @@ import { FiPhone, FiMenu, FiX, FiUser } from 'react-icons/fi';
 const menuItems = [
   { label: '메인', path: '/' },
   { label: '지도검색', path: '/map' },
+  { label: '테마물건', path: '/theme' },
   { label: '뉴스기사', path: '/news' },
   { label: '문의하기', path: '/request' },
 ];
