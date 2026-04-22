@@ -25,7 +25,7 @@ export default function Template02NewsPage() {
         <div className="flex-grow">
           <div className="grid grid-cols-1 gap-6">
             {dummyArticles.map((article) => (
-              <Link key={article.id} href={`news/${article.id}`} className="group block">
+              <Link key={article.id} href={`/news02/${article.id}`} className="group block">
                 <div className="bg-white rounded-2xl p-6 border border-gray-border shadow-sm hover:shadow-md hover:border-teal transition-all flex flex-col sm:flex-row gap-6">
                   
                   {article.hasImage && (
@@ -75,7 +75,7 @@ export default function Template02NewsPage() {
               {dummyArticles.slice(0).reverse().map((item, idx) => (
                 <li key={idx} className="flex gap-3 group">
                   <span className={`font-black text-[16px] mt-0.5 ${idx === 0 ? 'text-teal' : 'text-gray-300'}`}>{idx + 1}</span>
-                  <Link href={`news/${item.id}`} className="text-[14px] text-gray-700 font-medium group-hover:text-teal transition-colors line-clamp-2 leading-snug">
+                  <Link href={`/news02/${item.id}`} className="text-[14px] text-gray-700 font-medium group-hover:text-teal transition-colors line-clamp-2 leading-snug">
                     {item.title}
                   </Link>
                 </li>

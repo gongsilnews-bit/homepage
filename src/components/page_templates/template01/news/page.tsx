@@ -29,7 +29,7 @@ export default function Template01NewsPage() {
         <div className="flex-grow">
           <div className="space-y-6">
             {dummyArticles.map((article) => (
-              <Link key={article.id} href={`news/${article.id}`} className="block group">
+              <Link key={article.id} href={`/news01/${article.id}`} className="block group">
                 <article className="flex gap-6 p-6 border border-gray-200 rounded-lg hover:border-gold hover:shadow-md transition-all bg-white">
                   <div className="flex-grow flex flex-col justify-between">
                     <div>
@@ -80,7 +80,7 @@ export default function Template01NewsPage() {
             <ul className="space-y-4">
               {dummyArticles.slice(0).reverse().map((item, idx) => (
                 <li key={idx}>
-                  <Link href={`news/${item.id}`} className="flex gap-3 group">
+                  <Link href={`/news01/${item.id}`} className="flex gap-3 group">
                     <span className="text-gold font-bold text-[18px] leading-none mt-1">{idx + 1}</span>
                     <span className="text-[14px] text-gray-800 group-hover:text-gold leading-tight line-clamp-2 transition-colors">
                       {item.title}
