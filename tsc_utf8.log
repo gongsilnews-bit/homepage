@@ -1,0 +1,14 @@
+﻿.next/dev/types/validator.ts(24,44): error TS2344: Type 'Route' does not satisfy the constraint 'LayoutRoutes'.
+  Type 'import("C:/Users/user/Desktop/homepage/.next/dev/types/routes").LayoutRoutes' is not assignable to type 'import("C:/Users/user/Desktop/homepage/.next/types/routes").LayoutRoutes'.
+    Type '"/[tenant_id]/oneroom-sample"' is not assignable to type 'LayoutRoutes'.
+.next/dev/types/validator.ts(24,75): error TS2344: Type 'Route' does not satisfy the constraint 'LayoutRoutes'.
+  Type 'import("C:/Users/user/Desktop/homepage/.next/dev/types/routes").LayoutRoutes' is not assignable to type 'import("C:/Users/user/Desktop/homepage/.next/types/routes").LayoutRoutes'.
+    Type '"/[tenant_id]/oneroom-sample"' is not assignable to type 'LayoutRoutes'.
+.next/dev/types/validator.ts(105,39): error TS2307: Cannot find module '../../../src/app/[tenant_id]/oneroom-sample/about/page.js' or its corresponding type declarations.
+.next/dev/types/validator.ts(114,39): error TS2307: Cannot find module '../../../src/app/[tenant_id]/oneroom-sample/board/page.js' or its corresponding type declarations.
+.next/dev/types/validator.ts(123,39): error TS2307: Cannot find module '../../../src/app/[tenant_id]/oneroom-sample/map/page.js' or its corresponding type declarations.
+.next/dev/types/validator.ts(132,39): error TS2307: Cannot find module '../../../src/app/[tenant_id]/oneroom-sample/news/page.js' or its corresponding type declarations.
+.next/dev/types/validator.ts(141,39): error TS2307: Cannot find module '../../../src/app/[tenant_id]/oneroom-sample/page.js' or its corresponding type declarations.
+.next/dev/types/validator.ts(150,39): error TS2307: Cannot find module '../../../src/app/[tenant_id]/oneroom-sample/request/page.js' or its corresponding type declarations.
+.next/dev/types/validator.ts(210,39): error TS2307: Cannot find module '../../../src/app/[tenant_id]/oneroom-sample/layout.js' or its corresponding type declarations.
+src/app/actions/ai.ts(3,36): error TS2307: Cannot find module '@google/generative-ai' or its corresponding type declarations.
