@@ -7,17 +7,14 @@ import { FiPhone, FiMenu, FiX } from 'react-icons/fi';
 import { FaHome } from 'react-icons/fa';
 
 const mainMenuItems = [
+  { label: '메인', path: '/' },
   { label: '지도검색', path: '/map' },
-  { label: '원룸', path: '/map?type=oneroom' },
-  { label: '미투', path: '/map?type=mini2room' },
-  { label: '투룸', path: '/map?type=tworoom' },
-  { label: '쓰리룸 이상', path: '/map?type=threeroom' },
-  { label: '상가', path: '/map?type=commercial' },
+  { label: '테마물건', path: '/theme' },
+  { label: '뉴스기사', path: '/news' },
+  { label: '문의하기', path: '/request' },
 ];
 
 const utilMenuItems = [
-  { label: '매물 의뢰하기', path: '/request' },
-  { label: '부동산 뉴스', path: '/news' },
   { label: '공지사항', path: '/board' },
   { label: '회사소개', path: '/about' },
 ];
