@@ -4,10 +4,10 @@ import { useState } from 'react';
 import { FiMapPin, FiHeart } from 'react-icons/fi';
 
 const mockProperties = [
-  { id: 1, type: '원룸', price: '300/35', tag: '월세', title: '[공단동] 풀옵션 햇살가득 원룸', location: '구미시 공단동', labels: ['풀옵션', '즉시입주'], img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500&q=80' },
-  { id: 2, type: '미투', price: '500/45', tag: '월세', title: '[진평동] 신축 첫입주 미투', location: '구미시 진평동', labels: ['신축', '주차가능'], img: 'https://images.unsplash.com/photo-1502672260266-1c1e5250ad11?w=500&q=80' },
-  { id: 3, type: '투룸', price: '전세 7,000', tag: '전세', title: '[인동] 깔끔한 투룸 올리모델링', location: '구미시 인동', labels: ['올공사', '전세대출'], img: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=500&q=80' },
-  { id: 4, type: '상가', price: '2,000/120', tag: '월세', title: '[구평동] 무권리 1층 대로변 상가', location: '구미시 구평동', labels: ['무권리', '1층'], img: 'https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=500&q=80' },
+  { id: 1, type: '원룸', price: '300/35', tag: '월세', title: '[공단동] 풀옵션 햇살가득 원룸', location: '구미시 공단동', themes: ['풀옵션', '즉시입주'], img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500&q=80' },
+  { id: 2, type: '미투', price: '500/45', tag: '월세', title: '[진평동] 신축 첫입주 미투', location: '구미시 진평동', themes: ['신축', '주차가능'], img: 'https://images.unsplash.com/photo-1502672260266-1c1e5250ad11?w=500&q=80' },
+  { id: 3, type: '투룸', price: '전세 7,000', tag: '전세', title: '[인동] 깔끔한 투룸 올리모델링', location: '구미시 인동', themes: ['올공사', '전세대출'], img: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=500&q=80' },
+  { id: 4, type: '상가', price: '2,000/120', tag: '월세', title: '[구평동] 무권리 1층 대로변 상가', location: '구미시 구평동', themes: ['무권리', '1층'], img: 'https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=500&q=80' },
 ];
 
 export default function PropertySection02() {
@@ -70,9 +70,9 @@ export default function PropertySection02() {
                 </div>
                 {/* Labels */}
                 <div className="flex items-center gap-1.5">
-                  {prop.labels.map((label) => (
-                    <span key={label} className="text-[11px] text-teal bg-teal-light border border-teal/20 px-2 py-0.5 rounded-md">
-                      #{label}
+                  {prop.themes.map((theme) => (
+                    <span key={theme} className="text-[11px] text-teal bg-teal-light border border-teal/20 px-2 py-0.5 rounded-md">
+                      #{theme}
                     </span>
                   ))}
                 </div>

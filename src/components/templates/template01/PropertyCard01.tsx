@@ -124,6 +124,16 @@ export default function PropertyCard01({ property }: PropertyCardProps) {
           {property.description}
         </p>
 
+        {property.themes && property.themes.length > 0 && (
+          <div className="flex flex-wrap gap-1 mb-3">
+            {property.themes.map((theme, idx) => (
+              <span key={idx} className="text-[11px] text-gray-500 bg-gray-50 border border-gray-200 px-2 py-0.5 rounded">
+                #{theme}
+              </span>
+            ))}
+          </div>
+        )}
+
         <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-[13px]">
           <div className="flex justify-between">
             <span className="text-gray-medium">전용면적</span>

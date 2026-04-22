@@ -11,6 +11,7 @@ export interface Property {
   nearbyInfo: string;
   badge: 'NEW' | '추천' | 'NEW+추천' | null;
   images: string[];
+  themes?: string[];
 }
 
 export const sampleProperties: Property[] = [
@@ -30,6 +31,7 @@ export const sampleProperties: Property[] = [
       'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&h=350&fit=crop',
       'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=500&h=350&fit=crop',
     ],
+    themes: ['역세권', '대로변', '신축급'],
   },
   {
     id: 2,
@@ -47,6 +49,7 @@ export const sampleProperties: Property[] = [
       'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=350&fit=crop',
       'https://images.unsplash.com/photo-1497215842964-222b430dc094?w=500&h=350&fit=crop',
     ],
+    themes: ['무권리', '통입대가능'],
   },
   {
     id: 3,
