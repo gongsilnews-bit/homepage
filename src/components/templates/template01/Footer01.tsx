@@ -11,7 +11,6 @@ const footerLinks = [
   { label: '회사소개', path: '/about' },
   { label: '오시는 길', path: '/location' },
   { label: '공지사항', path: '/board' },
-  { label: 'Contact Us', path: '/contact' },
   { label: '의뢰하기', path: '/request' },
   { label: '이용약관', path: '/terms' },
   { label: '개인정보처리방침', path: '/privacy' },
