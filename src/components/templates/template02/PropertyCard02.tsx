@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
@@ -34,8 +34,8 @@ export default function PropertyCard02({ property }: PropertyCardProps) {
     setLiked(!liked);
   };
 
-  const showNewBadge = property.badge === 'NEW' || property.badge === 'NEW+異붿쿇';
-  const showRecommendBadge = property.badge === '異붿쿇' || property.badge === 'NEW+異붿쿇';
+  const showNewBadge = property.badge === 'NEW' || property.badge === 'NEW+추천';
+  const showRecommendBadge = property.badge === '추천' || property.badge === 'NEW+추천';
 
   return (
     <a href={`/theme/${property.id}`} className="block group">
@@ -53,14 +53,14 @@ export default function PropertyCard02({ property }: PropertyCardProps) {
             <button
               onClick={prevImage}
               className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100"
-              aria-label="?댁쟾 ?대?吏"
+              aria-label="이전 이미지"
             >
               <FiChevronLeft size={16} />
             </button>
             <button
               onClick={nextImage}
               className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100"
-              aria-label="?ㅼ쓬 ?대?吏"
+              aria-label="다음 이미지"
             >
               <FiChevronRight size={16} />
             </button>
@@ -71,7 +71,7 @@ export default function PropertyCard02({ property }: PropertyCardProps) {
         <div className="absolute top-3 right-3 flex gap-1.5">
           {showRecommendBadge && (
             <span className="bg-orange text-white text-[11px] font-bold px-2.5 py-1 rounded">
-              異붿쿇
+              추천
             </span>
           )}
           {showNewBadge && (
@@ -85,7 +85,7 @@ export default function PropertyCard02({ property }: PropertyCardProps) {
         <button
           onClick={toggleLike}
           className="absolute bottom-3 right-3 text-white hover:text-teal transition-colors"
-          aria-label="李쒗븯湲?
+          aria-label="찜하기"
         >
           <FiHeart
             size={22}
@@ -136,21 +136,21 @@ export default function PropertyCard02({ property }: PropertyCardProps) {
 
         <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-[13px]">
           <div className="flex justify-between">
-            <span className="text-gray-medium">?꾩슜硫댁쟻</span>
+            <span className="text-gray-medium">전용면적</span>
             <span className="font-semibold text-dark">{property.area}<span className="text-[11px] text-gray-medium">({property.areaPyeong})</span></span>
           </div>
           <div>
-            <span className="text-[12px] text-gray-medium">二쇰??뺣낫</span>
+            <span className="text-[12px] text-gray-medium">주변정보</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-gray-medium">蹂댁쬆湲?/span>
+            <span className="text-gray-medium">보증금</span>
             <span className="font-semibold text-dark">{property.deposit}</span>
           </div>
           <p className="text-[11px] text-gray-medium leading-relaxed line-clamp-2 row-span-2">
             {property.nearbyInfo}
           </p>
           <div className="flex justify-between">
-            <span className="text-gray-medium">?붿엫?猷?/span>
+            <span className="text-gray-medium">월임대료</span>
             <span className="font-bold text-dark">{property.monthlyRent}</span>
           </div>
         </div>
@@ -158,4 +158,3 @@ export default function PropertyCard02({ property }: PropertyCardProps) {
     </a>
   );
 }
-
