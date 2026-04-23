@@ -9,6 +9,7 @@ import MapSearchBar from "@/components/MapSearchBar";
 import Header from "@/components/templates/template01/Header01";
 
 
+import Header02 from '@/components/templates/template02/Header02';
 // 카테고리 설정 데이터
 const CATEGORY_CONFIG: Record<string, { name: string; pills: string[]; basicFilters: string[]; detailFilters: string[]; showToggle: boolean; pillStyle?: string }> = {
   apart: { name: "아파트·오피스텔", pills: ["아파트", "아파트분양권", "재건축", "오피스텔", "오피스텔분양권", "재개발"], basicFilters: ["거래방식", "가격대", "면적", "사용승인일", "세대수", "층수", "방/욕실수", "방향", "기타옵션"], detailFilters: [], showToggle: false },
@@ -958,7 +959,7 @@ export default function MapClient({ initialVacancies, hideHeader = false }: { in
 
   return (
     <div style={{ height: "100vh", display: "flex", flexDirection: "column", overflow: "hidden", fontFamily: "'Pretendard', sans-serif" }}>
-      {!hideHeader && <Header />}
+      {!hideHeader && <Header02 />}
       {/* ===== 상단 필터 바 ===== */}
       <div style={{ background: "#fff", width: "100%", zIndex: 200, position: "relative", borderBottom: "1px solid #ccc", flexShrink: 0 }}>
 

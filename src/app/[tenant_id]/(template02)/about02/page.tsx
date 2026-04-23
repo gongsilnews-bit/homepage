@@ -2,10 +2,12 @@ import React from 'react';
 import Header from '@/components/templates/template02/Header02';
 import Footer from '@/components/templates/template02/Footer02';
 
+import Header02 from '@/components/templates/template02/Header02';
+import Footer02 from '@/components/templates/template02/Footer02';
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white flex flex-col font-pretendard">
-      <Header />
+      <Header02 />
 
       <main className="flex-grow">
         {/* Hero Section */}
@@ -120,7 +122,7 @@ export default function AboutPage() {
         </section>
       </main>
 
-      <Footer />
+      <Footer02 />
     </div>
   );
 }

@@ -3,6 +3,8 @@ import Header from '@/components/templates/template01/Header01';
 import Footer from '@/components/templates/template01/Footer01';
 import Link from 'next/link';
 
+import Header01 from '@/components/templates/template01/Header01';
+import Footer01 from '@/components/templates/template01/Footer01';
 const MOCK_POSTS = [
   { id: 1, title: '빌드온 부동산 홈페이지 오픈을 축하합니다!', author: '관리자', date: '2026.04.21', views: 125 },
   { id: 2, title: '역삼역 인근 가성비 좋은 사무실 추천 부탁드립니다.', author: '이정훈', date: '2026.04.20', views: 82 },
@@ -14,7 +16,7 @@ const MOCK_POSTS = [
 export default function BoardPage() {
   return (
     <div className="min-h-screen bg-white flex flex-col font-pretendard">
-      <Header />
+      <Header01 />
 
       <main className="flex-grow w-full max-w-[1000px] mx-auto px-4 py-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 border-b-2 border-gray-900 pb-6">
@@ -93,7 +95,7 @@ export default function BoardPage() {
         </div>
       </main>
 
-      <Footer />
+      <Footer01 />
     </div>
   );
 }

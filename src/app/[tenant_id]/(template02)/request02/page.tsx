@@ -2,12 +2,14 @@
 
 import React, { useState } from 'react';
 
+import Header02 from '@/components/templates/template02/Header02';
+import Footer02 from '@/components/templates/template02/Footer02';
 export default function RequestPage() {
   const [activeTab, setActiveTab] = useState<'rent' | 'lease'>('rent');
 
   return (
     <div className="min-h-screen flex flex-col bg-white font-pretendard">
-      <Header />
+      <Header02 />
 
       <main className="flex-grow w-full max-w-[1024px] mx-auto px-4 py-12 md:py-16">
         
@@ -222,7 +224,7 @@ export default function RequestPage() {
         </div>
       </main>
 
-      <Footer />
+      <Footer02 />
     </div>
   );
 }

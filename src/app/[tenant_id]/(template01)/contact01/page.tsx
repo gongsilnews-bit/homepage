@@ -2,10 +2,12 @@ import React from 'react';
 import Header from '@/components/templates/template01/Header01';
 import Footer from '@/components/templates/template01/Footer01';
 
+import Header01 from '@/components/templates/template01/Header01';
+import Footer01 from '@/components/templates/template01/Footer01';
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white flex flex-col font-pretendard">
-      <Header />
+      <Header01 />
 
       <main className="flex-grow w-full max-w-[800px] mx-auto px-4 py-16">
         <div className="text-center mb-12">
@@ -88,7 +90,7 @@ export default function ContactPage() {
         </form>
       </main>
 
-      <Footer />
+      <Footer01 />
     </div>
   );
 }

@@ -3,6 +3,8 @@ import Header from '@/components/templates/template01/Header01';
 import Footer from '@/components/templates/template01/Footer01';
 import Link from 'next/link';
 
+import Header01 from '@/components/templates/template01/Header01';
+import Footer01 from '@/components/templates/template01/Footer01';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function BoardDetailPage({ params }: { params: any }) {
   // Mock detail data
@@ -28,7 +30,7 @@ export default function BoardDetailPage({ params }: { params: any }) {
 
   return (
     <div className="min-h-screen bg-white flex flex-col font-pretendard">
-      <Header />
+      <Header01 />
 
       <main className="flex-grow w-full max-w-[1000px] mx-auto px-4 py-16">
         {/* Post Header */}
@@ -83,7 +85,7 @@ export default function BoardDetailPage({ params }: { params: any }) {
         </div>
       </main>
 
-      <Footer />
+      <Footer01 />
     </div>
   );
 }

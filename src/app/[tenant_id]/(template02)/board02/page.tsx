@@ -1,5 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
+import Header02 from '@/components/templates/template02/Header02';
+import Footer02 from '@/components/templates/template02/Footer02';
 
 const MOCK_POSTS = [
   { id: 1, title: '빌드온 부동산 홈페이지 오픈을 축하합니다!', author: '관리자', date: '2026.04.21', views: 125 },
@@ -12,7 +14,7 @@ const MOCK_POSTS = [
 export default function BoardPage() {
   return (
     <div className="min-h-screen bg-white flex flex-col font-pretendard">
-      <Header />
+      <Header02 />
 
       <main className="flex-grow w-full max-w-[1000px] mx-auto px-4 py-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 border-b-2 border-gray-900 pb-6">
@@ -91,7 +93,7 @@ export default function BoardPage() {
         </div>
       </main>
 
-      <Footer />
+      <Footer02 />
     </div>
   );
 }

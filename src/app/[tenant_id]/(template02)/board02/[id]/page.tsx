@@ -1,5 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
+import Header02 from '@/components/templates/template02/Header02';
+import Footer02 from '@/components/templates/template02/Footer02';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function BoardDetailPage({ params }: { params: any }) {
@@ -26,7 +28,7 @@ export default function BoardDetailPage({ params }: { params: any }) {
 
   return (
     <div className="min-h-screen bg-white flex flex-col font-pretendard">
-      <Header />
+      <Header02 />
 
       <main className="flex-grow w-full max-w-[1000px] mx-auto px-4 py-16">
         {/* Post Header */}
@@ -81,7 +83,7 @@ export default function BoardDetailPage({ params }: { params: any }) {
         </div>
       </main>
 
-      <Footer />
+      <Footer02 />
     </div>
   );
 }
